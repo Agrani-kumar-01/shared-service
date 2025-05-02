@@ -8,7 +8,7 @@ ORANGE='\033[38;5;208m'
 RED='\033[0;31m'
 BOLD_BLUE='\033[1;34m'
 
-SHARED_PACKAGE_NAME="homelead-shared-api"
+SHARED_PACKAGE_NAME="shared-service"
 
 ROOT_DIR="$(dirname "$(pwd)")/"
 SHARED_DIR="."
