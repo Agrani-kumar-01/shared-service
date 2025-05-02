@@ -1,0 +1,9 @@
+node_modules/*
+build/*
+.prettierrc
+package.json
+tsconfig.json
+webStorm.config.js
+.gitlab-ci.yml
+README.md
+src/swagger/components.yaml

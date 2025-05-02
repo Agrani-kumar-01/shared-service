@@ -1,0 +1,88 @@
+securitySchemes:
+    ApiKeyAuth:
+        type: apiKey
+        in: header
+        name: Authorization
+parameters:
+    headerLanguage:
+        name: Accept-Language
+        in: header
+        required: true
+        schema:
+            type: string
+            default: en
+            enum:
+              - en
+              - ar
+    headerPlatform:
+        name: x-platform
+        in: header
+        required: true
+        schema:
+            type: string
+            default: web
+            enum:
+              - ios
+              - android
+              - web
+    headerVersion:
+        name: x-version
+        in: header
+        required: true
+        schema:
+            type: string
+            default: 1.0.0
+            pattern: '^[\d]+\.[\d]+\.[\d]+$'
+    headerTimeZone:
+        name: x-time-zone
+        in: header
+        required: true
+        schema:
+            type: number
+            default: 330
+    queryPage:
+        name: page
+        in: query
+        description: page number
+        allowEmptyValue: false
+        required: true
+        schema:
+            type: integer
+    queryPerPage:
+        name: perPage
+        in: query
+        description: number of records per page
+        allowEmptyValue: false
+        required: true
+        schema:
+            type: integer
+responses:
+    BadRequestError:
+        description: Request fails validation or doesn't meet all conditions for request
+        content:
+            application/json:
+                schema:
+                    example:
+                        success: false
+                        message: 'Validation failed'
+                        data: null
+                    allOf:
+                      - $ref: '#/components/schemas/ApiResponse'
+                    properties:
+                        data:
+                            type: object
+                            nullable: true
+    NotFoundError:
+        description: Requested resource was not found
+    UnauthorizedError:
+        description: Access token is missing or invalid
+schemas:
+    ApiResponse:
+        required:
+          - success
+        properties:
+            success:
+                type: boolean
+            message:
+                type: string
+            data: {}
