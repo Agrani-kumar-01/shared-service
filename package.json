@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "shared service",
   "private": true,
-  "repository": "https://gitlab.telepathyinfotech.com/homelead/homelead-shared-api",
+  "repository": "https://github.com/Agrani-kumar-01/shared-service.git",
   "engines": {
     "node": ">=20.18.0",
     "npm": ">=10.8.2"
