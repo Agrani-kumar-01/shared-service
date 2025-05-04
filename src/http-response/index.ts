@@ -26,7 +26,7 @@ const logResponse = ({ success, message }: { success: boolean; message?: string 
     logger.silly(`HTTP_RESPONSE:: success: ${success}, message: ${message}`);
 };
 
-const respons: ResponseTypes = {
+const response: ResponseTypes = {
     success(data = null, message = '') {
         logResponse({ success: true, message });
         (this as unknown as Response).status(HttpResponseCode.OK).send({
@@ -94,4 +94,4 @@ const respons: ResponseTypes = {
     },
 };
 
-export { respons };
+export { response };
