@@ -1,4 +1,4 @@
-import { LockLevel, Status } from '@enums';
+import { Status } from '@enums';
 import { TypesObjectId } from '@schemas';
 import { Document, Model } from 'mongoose';
 
@@ -8,10 +8,10 @@ export interface IUser {
     avatar?: string;
     password?: string;
     status: Status;
+    authTokenIssuedAt: number;
     failedAttempts: number;
     firstFailedAt: Date | null;
-    lockUntil: Date | null;
-    lockLevel: LockLevel; // 1 (10 min), 2 (1 hour), 3 (permanent until forgot password)
+    lockUntil: number;
 }
 
 export interface IUserDoc extends IUser, Document {
