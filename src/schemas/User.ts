@@ -12,6 +12,7 @@ export interface IUser {
     failedAttempts: number;
     firstFailedAt: Date | null;
     lockUntil: number;
+    passwordChangedAt: number;
 }
 
 export interface IUserDoc extends IUser, Document {

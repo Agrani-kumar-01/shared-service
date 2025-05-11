@@ -37,7 +37,7 @@ const sendMail = async (
     locals.site_title = process.env.SITE_TITLE ?? 'SITE_TITLE';
     locals.site_url = process.env.LOGO_PATH
         ? `${process.env.LOGO_PATH?.replace('/logo.svg', '')}`
-        : 'https://homlead.in';
+        : 'https://social-service.in';
 
     const renderedTemplate = await templateRenderer.render(template, locals);
 

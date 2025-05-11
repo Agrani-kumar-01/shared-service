@@ -20,6 +20,40 @@ const randomString = (length: number = 30): string => {
     return result;
 };
 
+const generateSecurePassword = (length: number = 10): string => {
+    const chars = {
+        upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        lower: 'abcdefghijklmnopqrstuvwxyz',
+        digits: '0123456789',
+        symbols: '#?!@$%^&*-',
+    };
+    const allChars = Object.values(chars).join('');
+    const pattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)(?=.*?[#?!@$%^&*-]).{8,15}$/;
+
+    if (length < 8 || length > 15) throw new Error('Length must be 8-15');
+
+    const getRandomChar = (str: string) => str[Math.floor(Math.random() * str.length)];
+
+    while (true) {
+        const pwd = [
+            getRandomChar(chars.upper),
+            getRandomChar(chars.lower),
+            getRandomChar(chars.digits),
+            getRandomChar(chars.symbols),
+        ];
+
+        for (let i = pwd.length; i < length; i++) pwd.push(getRandomChar(allChars));
+
+        for (let i = pwd.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [pwd[i], pwd[j]] = [pwd[j], pwd[i]];
+        }
+
+        const password = pwd.join('');
+        if (pattern.test(password)) return password;
+    }
+};
+
 const escapeRegex = (text: string): string => text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
 
 const isValidObjectId = (objectId: string): boolean => {
@@ -136,4 +170,5 @@ export {
     otherAllowedDomains,
     getSessionCookieDomain,
     toChunkedArray,
+    generateSecurePassword,
 };

@@ -40,8 +40,7 @@ export const joi = Joi.extend(joi => {
 export const commonValidations = {
     id: joi.objectId().valid().required(),
     email: joi.string().trim().lowercase().email().regex(patterns.email, 'emailPattern').required(),
-    requiredPassword: joi.string().trim().min(8).max(72).regex(patterns.password, 'passwordPattern').required(),
-    optinalPassword: joi.string().trim().min(8).max(72).regex(patterns.password, 'passwordPattern').optional(),
+    password: joi.string().trim().min(8).max(72).regex(patterns.password, 'passwordPattern').required(),
     otp: joi.string().trim().regex(patterns.otp, 'otpPattern').required(),
     token: joi.string().trim().hex().required(),
     country: joi.string().trim().required(),
