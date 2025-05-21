@@ -13,4 +13,6 @@ export interface DecryptionData {
     encryptedText: string;
 }
 
+export * from './Chat';
+export * from './Group';
 export * from './User';

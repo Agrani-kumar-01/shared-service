@@ -1,8 +1,12 @@
 securitySchemes:
-    ApiKeyAuth:
+    AccessTokenAuth:
         type: apiKey
         in: header
-        name: Authorization
+        name: accessToken
+    RefreshTokenAuth:
+        type: apiKey
+        in: header
+        name: refreshToken
 parameters:
     headerLanguage:
         name: Accept-Language
